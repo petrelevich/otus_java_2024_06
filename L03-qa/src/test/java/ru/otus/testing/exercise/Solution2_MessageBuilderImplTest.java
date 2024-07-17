@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+@SuppressWarnings("java:S125")
 class Solution2_MessageBuilderImplTest {
 
     public static final String DEFAULT_MESSAGE_TEXT = "defaultText";

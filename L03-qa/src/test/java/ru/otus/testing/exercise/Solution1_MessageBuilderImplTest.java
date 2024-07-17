@@ -4,7 +4,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-@SuppressWarnings({"java:S2699"})
+@SuppressWarnings({"java:S2699", "java:S125"})
 class Solution1_MessageBuilderImplTest {
 
     @BeforeEach
