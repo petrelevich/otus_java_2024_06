@@ -24,9 +24,14 @@ public class Summator {
         prevPrevValue = prevValue;
         prevValue = data.getValue();
 
-        for (var idx = 0; idx < 3; idx++) {
+        int sumValues = 0;
+        for (Data listValue : listValues) {
+            sumValues += listValue.getValue();
+        }
+
+        for (int idx = 0; idx < 3; idx++) {
             someValue += (sumLastThreeValues * sumLastThreeValues / (data.getValue() + 1) - sum);
-            someValue = Math.abs(someValue) + listValues.size();
+            someValue = Math.abs(someValue) + listValues.size() + sumValues;
         }
     }
 

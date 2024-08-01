@@ -7,12 +7,17 @@ package ru.otus.gc;
 -XX:+UseG1GC
 */
 
-@SuppressWarnings({"java:S106", "java:S1144", "java:S125"})
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@SuppressWarnings({"java:S1144", "java:S125"})
 public class Boxing {
+    private static final Logger log = LoggerFactory.getLogger(Boxing.class);
+
     public static void main(String[] args) throws InterruptedException {
         //        calcInteger();
         calcInt();
-        System.out.println("done");
+        log.info("done");
     }
 
     private static void calcInteger() throws InterruptedException {
@@ -26,7 +31,7 @@ public class Boxing {
                 Thread.sleep(1000);
             }
         }
-        System.out.println(counter);
+        log.info("counter:{}", counter);
     }
 
     private static void calcInt() throws InterruptedException {
@@ -40,6 +45,6 @@ public class Boxing {
                 Thread.sleep(1000);
             }
         }
-        System.out.println(counter);
+        log.info("counter:{}", counter);
     }
 }

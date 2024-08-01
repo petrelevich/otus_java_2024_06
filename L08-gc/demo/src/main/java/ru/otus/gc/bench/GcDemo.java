@@ -6,6 +6,8 @@ import java.lang.management.ManagementFactory;
 import java.util.List;
 import javax.management.*;
 import javax.management.openmbean.CompositeData;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /*
 О формате логов
@@ -34,13 +36,13 @@ VM options:
     -XX:MaxGCPauseMillis=10
 */
 
-@SuppressWarnings({"java:S106", "java:S1130"})
+@SuppressWarnings({"java:S1130"})
 public class GcDemo {
+    private static final Logger logger = LoggerFactory.getLogger(GcDemo.class);
     private volatile int objectArraySize = 5 * 1000 * 1000;
 
     public static void main(String... args) throws Exception {
-        System.out.println(
-                "Starting pid: " + ManagementFactory.getRuntimeMXBean().getName());
+        logger.info("Starting pid: {}", ManagementFactory.getRuntimeMXBean().getName());
 
         GcDemo gcDemo = new GcDemo();
 
@@ -61,7 +63,7 @@ public class GcDemo {
     private void run() throws InterruptedException {
         long beginTime = System.currentTimeMillis();
         createObject();
-        System.out.println("time:" + (System.currentTimeMillis() - beginTime) / 1000);
+        logger.info("time:{}", (System.currentTimeMillis() - beginTime) / 1000);
     }
 
     private void createObject() throws InterruptedException {
@@ -89,7 +91,7 @@ public class GcDemo {
     private static void switchOnMonitoring() {
         List<GarbageCollectorMXBean> gcbeans = java.lang.management.ManagementFactory.getGarbageCollectorMXBeans();
         for (GarbageCollectorMXBean gcbean : gcbeans) {
-            System.out.println("GC name:" + gcbean.getName());
+            logger.info("GC name:{}", gcbean.getName());
             NotificationEmitter emitter = (NotificationEmitter) gcbean;
             NotificationListener listener = (notification, handback) -> {
                 GarbageCollectionNotificationInfo info =
@@ -101,17 +103,13 @@ public class GcDemo {
                 long startTime = info.getGcInfo().getStartTime();
                 long duration = info.getGcInfo().getDuration();
 
-                System.out.println("start:"
-                        + startTime
-                        + " Name:"
-                        + gcName
-                        + ", action:"
-                        + gcAction
-                        + ", gcCause:"
-                        + gcCause
-                        + "("
-                        + duration
-                        + " ms)");
+                logger.info(
+                        "start:{}, Name:{}, action:{}, gcCause:{}  {}(ms)",
+                        startTime,
+                        gcName,
+                        gcAction,
+                        gcCause,
+                        duration);
             };
             emitter.addNotificationListener(
                     listener,

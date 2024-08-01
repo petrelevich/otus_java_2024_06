@@ -10,9 +10,12 @@ package ru.calculator;
 */
 
 import java.time.LocalDateTime;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-@SuppressWarnings("java:S106")
 public class CalcDemo {
+    private static final Logger log = LoggerFactory.getLogger(CalcDemo.class);
+
     public static void main(String[] args) {
         long counter = 100_000_000;
         var summator = new Summator();
@@ -23,16 +26,16 @@ public class CalcDemo {
             summator.calc(data);
 
             if (idx % 10_000_000 == 0) {
-                System.out.println(LocalDateTime.now() + " current idx:" + idx);
+                log.info("{} current idx:{}", LocalDateTime.now(), idx);
             }
         }
 
         long delta = System.currentTimeMillis() - startTime;
-        System.out.println(summator.getPrevValue());
-        System.out.println(summator.getPrevPrevValue());
-        System.out.println(summator.getSumLastThreeValues());
-        System.out.println(summator.getSomeValue());
-        System.out.println(summator.getSum());
-        System.out.println("spend msec:" + delta + ", sec:" + (delta / 1000));
+        log.info("PrevValue:{}", summator.getPrevValue());
+        log.info("PrevPrevValue:{}", summator.getPrevPrevValue());
+        log.info("SumLastThreeValues:{}", summator.getSumLastThreeValues());
+        log.info("SomeValue:{}", summator.getSomeValue());
+        log.info("Sum:{}", summator.getSum());
+        log.info("spend msec:{}, sec:{}", delta, (delta / 1000));
     }
 }
