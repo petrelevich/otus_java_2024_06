@@ -14,7 +14,7 @@ public class Summator {
     // !!! сигнатуру метода менять нельзя
     public void calc(Data data) {
         listValues.add(data);
-        if (listValues.size() % 6_600_000 == 0) {
+        if (listValues.size() % 100_000 == 0) {
             listValues.clear();
         }
         sum += data.getValue();

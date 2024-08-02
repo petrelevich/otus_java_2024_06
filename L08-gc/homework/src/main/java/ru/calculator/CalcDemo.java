@@ -17,7 +17,7 @@ public class CalcDemo {
     private static final Logger log = LoggerFactory.getLogger(CalcDemo.class);
 
     public static void main(String[] args) {
-        long counter = 100_000_000;
+        long counter = 2_000_000;
         var summator = new Summator();
         long startTime = System.currentTimeMillis();
 
@@ -25,7 +25,7 @@ public class CalcDemo {
             var data = new Data(idx);
             summator.calc(data);
 
-            if (idx % 10_000_000 == 0) {
+            if (idx % 100_000 == 0) {
                 log.info("{} current idx:{}", LocalDateTime.now(), idx);
             }
         }
