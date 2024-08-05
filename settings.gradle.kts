@@ -13,6 +13,7 @@ include("L06-annotations")
 include("L08-gc:demo")
 include("L08-gc:homework")
 include("L09-docker")
+include("L10-byteCodes")
 
 pluginManagement {
     val jgitver: String by settings
