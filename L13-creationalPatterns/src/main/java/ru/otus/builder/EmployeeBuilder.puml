@@ -1,0 +1,32 @@
+@startuml
+participant Actor
+Actor -> Demo : main
+activate Demo
+create Builder
+Demo -> Builder : new
+activate Builder
+Builder --> Demo
+deactivate Builder
+Demo -> Builder : department
+activate Builder
+Builder --> Demo
+deactivate Builder
+Demo -> Builder : firstName
+activate Builder
+Builder --> Demo
+deactivate Builder
+Demo -> Builder : middleName
+activate Builder
+Builder --> Demo
+deactivate Builder
+Demo -> Builder : build
+activate Builder
+create Employee
+Builder -> Employee : new
+activate Employee
+Employee --> Builder
+deactivate Employee
+Builder --> Demo
+deactivate Builder
+return
+@enduml
