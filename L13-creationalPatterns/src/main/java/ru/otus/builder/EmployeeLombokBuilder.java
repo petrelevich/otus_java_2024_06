@@ -9,10 +9,13 @@ import lombok.Value;
 public class EmployeeLombokBuilder {
     @NonNull
     private String lastName;
+
     private String firstName;
     private String middleName;
+
     @NonNull
     private String company;
+
     private String department;
     private String position;
 }

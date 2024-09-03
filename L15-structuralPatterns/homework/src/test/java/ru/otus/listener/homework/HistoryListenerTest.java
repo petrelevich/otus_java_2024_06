@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import ru.otus.model.Message;
 import ru.otus.model.ObjectForMessage;
 
+@SuppressWarnings({"java:S1135", "java:S125"})
 class HistoryListenerTest {
 
     @Test

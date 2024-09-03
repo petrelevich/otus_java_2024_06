@@ -10,13 +10,10 @@ public class Employee {
     private String position;
 
     // Плохой конструктор.
-    public Employee(String lastName, String firstName,
-                    String middleName, String company,
-                    String department, String position) {
-        if (lastName == null || lastName.isEmpty())
-            throw new IllegalArgumentException("lastName is null or empty");
-        if (company == null || company.isEmpty())
-            throw new IllegalArgumentException("company is null or empty");
+    public Employee(
+            String lastName, String firstName, String middleName, String company, String department, String position) {
+        if (lastName == null || lastName.isEmpty()) throw new IllegalArgumentException("lastName is null or empty");
+        if (company == null || company.isEmpty()) throw new IllegalArgumentException("company is null or empty");
 
         this.lastName = lastName;
         this.firstName = firstName;
@@ -37,14 +34,13 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "lastName='" + lastName + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", middleName='" + middleName + '\'' +
-                ", company='" + company + '\'' +
-                ", department='" + department + '\'' +
-                ", position='" + position + '\'' +
-                '}';
+        return "Employee{" + "lastName='"
+                + lastName + '\'' + ", firstName='"
+                + firstName + '\'' + ", middleName='"
+                + middleName + '\'' + ", company='"
+                + company + '\'' + ", department='"
+                + department + '\'' + ", position='"
+                + position + '\'' + '}';
     }
 
     public static class Builder {
@@ -56,10 +52,8 @@ public class Employee {
         private String position;
 
         Builder(String lastName, String company) {
-            if (lastName == null || lastName.isEmpty())
-                throw new IllegalArgumentException("lastName is null or empty");
-            if (company == null || company.isEmpty())
-                throw new IllegalArgumentException("company is null or empty");
+            if (lastName == null || lastName.isEmpty()) throw new IllegalArgumentException("lastName is null or empty");
+            if (company == null || company.isEmpty()) throw new IllegalArgumentException("company is null or empty");
 
             this.lastName = lastName;
             this.company = company;
@@ -92,8 +86,8 @@ public class Employee {
 
         Employee build() {
             return new Employee(this);
-//          Можно и так:
-//          return new Employee(lastName, firstName, middleName, company, department, position);
+            //          Можно и так:
+            //          return new Employee(lastName, firstName, middleName, company, department, position);
         }
     }
 }
