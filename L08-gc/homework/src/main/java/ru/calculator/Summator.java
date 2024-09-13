@@ -2,6 +2,7 @@ package ru.calculator;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Summator {
     private Integer sum = 0;
@@ -9,7 +10,9 @@ public class Summator {
     private Integer prevPrevValue = 0;
     private Integer sumLastThreeValues = 0;
     private Integer someValue = 0;
+    //!!! эта коллекция должна остаться. Заменять ее на счетчик нельзя.
     private final List<Data> listValues = new ArrayList<>();
+    private final Random random = new Random(10);
 
     // !!! сигнатуру метода менять нельзя
     public void calc(Data data) {
@@ -17,7 +20,7 @@ public class Summator {
         if (listValues.size() % 100_000 == 0) {
             listValues.clear();
         }
-        sum += data.getValue();
+        sum += data.getValue() + random.nextInt();
 
         sumLastThreeValues = data.getValue() + prevValue + prevPrevValue;
 
