@@ -9,6 +9,7 @@ public class Summator {
     private Integer prevPrevValue = 0;
     private Integer sumLastThreeValues = 0;
     private Integer someValue = 0;
+    //!!! эта коллекция должна остаться. Заменять ее на счетчик нельзя.
     private final List<Data> listValues = new ArrayList<>();
 
     // !!! сигнатуру метода менять нельзя
