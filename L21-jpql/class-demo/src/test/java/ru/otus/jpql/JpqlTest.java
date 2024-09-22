@@ -18,6 +18,7 @@ import ru.otus.jpql.model.Course;
 import ru.otus.jpql.model.EMail;
 import ru.otus.jpql.model.OtusStudent;
 
+@SuppressWarnings("java:S125")
 class JpqlTest {
 
     private static final int EXPECTED_NUMBER_OF_STUDENTS = 10;
@@ -129,10 +130,10 @@ class JpqlTest {
             assertThat(students)
                     .isNotNull()
                     .hasSize(EXPECTED_NUMBER_OF_STUDENTS)
-                    .allMatch(s -> !s.getName().equals(""))
-                    .allMatch(s -> s.getCourses() != null && s.getCourses().size() > 0)
+                    .allMatch(s -> !s.getName().isEmpty())
+                    .allMatch(s -> s.getCourses() != null && !s.getCourses().isEmpty())
                     .allMatch(s -> s.getAvatar() != null)
-                    .allMatch(s -> s.getEmails() != null && s.getEmails().size() > 0);
+                    .allMatch(s -> s.getEmails() != null && !s.getEmails().isEmpty());
         });
         assertThat(sf.getStatistics().getPrepareStatementCount()).isEqualTo(EXPECTED_QUERIES_COUNT);
     }

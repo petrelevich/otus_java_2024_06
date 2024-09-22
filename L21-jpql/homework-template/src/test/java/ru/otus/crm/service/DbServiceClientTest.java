@@ -8,6 +8,7 @@ import ru.otus.base.AbstractHibernateTest;
 import ru.otus.crm.model.Client;
 
 @DisplayName("Демо работы с hibernate (с абстракциями) должно ")
+@SuppressWarnings("java:S125")
 class DbServiceClientTest extends AbstractHibernateTest {
 
     @Test

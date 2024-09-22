@@ -3,12 +3,12 @@ package ru.otus.core.repository;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Optional;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.otus.base.AbstractHibernateTest;
 import ru.otus.crm.model.Client;
 
+@SuppressWarnings("java:S125")
 class DataTemplateHibernateTest extends AbstractHibernateTest {
 
     @Test
@@ -60,20 +60,20 @@ class DataTemplateHibernateTest extends AbstractHibernateTest {
 
         // when
         var clientList = transactionManager.doInReadOnlyTransaction(session ->
-                clientTemplate.findAll(session).stream().map(Client::clone).collect(Collectors.toList()));
+                clientTemplate.findAll(session).stream().map(Client::clone).toList());
 
         // then
         assertThat(clientList).hasSize(1);
-        assertThat(clientList.get(0)).usingRecursiveComparison().isEqualTo(savedClient);
+        assertThat(clientList.getFirst()).usingRecursiveComparison().isEqualTo(savedClient);
 
         // when
         clientList = transactionManager.doInReadOnlyTransaction(
                 session -> clientTemplate.findByEntityField(session, "name", "updatedName").stream()
                         .map(Client::clone)
-                        .collect(Collectors.toList()));
+                        .toList());
 
         // then
         assertThat(clientList).hasSize(1);
-        assertThat(clientList.get(0)).usingRecursiveComparison().isEqualTo(savedClient);
+        assertThat(clientList.getFirst()).usingRecursiveComparison().isEqualTo(savedClient);
     }
 }

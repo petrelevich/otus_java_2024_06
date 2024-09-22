@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
@@ -47,7 +46,7 @@ class HomeworkTest {
 
         var tables = StreamSupport.stream(metadata.getDatabase().getNamespaces().spliterator(), false)
                 .flatMap(namespace -> namespace.getTables().stream())
-                .collect(Collectors.toList());
+                .toList();
         assertThat(tables).hasSize(3);
     }
 

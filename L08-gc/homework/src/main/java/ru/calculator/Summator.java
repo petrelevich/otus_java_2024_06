@@ -10,7 +10,7 @@ public class Summator {
     private Integer prevPrevValue = 0;
     private Integer sumLastThreeValues = 0;
     private Integer someValue = 0;
-    //!!! эта коллекция должна остаться. Заменять ее на счетчик нельзя.
+    // !!! эта коллекция должна остаться. Заменять ее на счетчик нельзя.
     private final List<Data> listValues = new ArrayList<>();
     private final Random random = new Random(10);
 

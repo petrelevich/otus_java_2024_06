@@ -17,6 +17,7 @@ import ru.otus.mainops.model.Avatar;
 import ru.otus.mainops.model.OtusStudent;
 import ru.otus.mainops.model.OtusTeacher;
 
+@SuppressWarnings("java:S125")
 class MainOperationsTest {
 
     private Avatar avatar;
@@ -52,10 +53,10 @@ class MainOperationsTest {
     @DisplayName("выкидывает исключение если вставляемая сущность в состоянии detached")
     @Test
     void shouldThrowExceptionWhenPersistDetachedEntity() {
-        var avatar = new Avatar(1L, "http://any-addr.ru/");
-        assertThatThrownBy(() -> doInSessionWithTransaction(sf, session -> session.persist(avatar)))
-                //        .isInstanceOf(EntityExistsException.class)
-                .isInstanceOf(org.hibernate.PersistentObjectException.class);
+        var avatarNew = new Avatar(1L, "http://any-addr.ru/");
+        assertThatThrownBy(() -> doInSessionWithTransaction(sf, session -> session.persist(avatarNew)))
+                .isInstanceOf(jakarta.persistence.EntityExistsException.class);
+        // .isInstanceOf(org.hibernate.PersistentObjectException.class);
     }
 
     @DisplayName("persist выкидывает исключение если вставляемая сущность "
@@ -121,8 +122,8 @@ class MainOperationsTest {
         try (var session = sf.openSession()) {
             actualStudent = session.find(OtusStudent.class, 1L);
         }
-        var avatar = actualStudent.getAvatar();
-        assertThatThrownBy(avatar::getPhotoUrl).isInstanceOf(LazyInitializationException.class);
+        var avatarWithPhoto = actualStudent.getAvatar();
+        assertThatThrownBy(avatarWithPhoto::getPhotoUrl).isInstanceOf(LazyInitializationException.class);
     }
 
     @DisplayName("find загружает сущность со связями")
