@@ -35,6 +35,9 @@ include("L20-hibernate")
 include("L21-jpql:class-demo")
 include("L21-jpql:homework-template")
 
+include("L22-cache")
+
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
