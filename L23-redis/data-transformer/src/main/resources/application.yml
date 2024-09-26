@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+data-source:
+  url: http://localhost:8080
+
+client-name: "data-transformer"
+
+redis:
+  url: "localhost:6379"
+  password: "passWd"

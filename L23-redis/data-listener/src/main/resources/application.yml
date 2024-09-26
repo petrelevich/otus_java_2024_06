@@ -1,0 +1,5 @@
+client-name: "data-listener"
+
+redis:
+  url: "localhost:6379"
+  password: "passWd"

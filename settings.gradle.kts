@@ -36,7 +36,10 @@ include("L21-jpql:class-demo")
 include("L21-jpql:homework-template")
 
 include("L22-cache")
-
+include("L23-redis:counter")
+include("L23-redis:data-source")
+include("L23-redis:data-transformer")
+include("L23-redis:data-listener")
 
 pluginManagement {
     val jgitver: String by settings
