@@ -7,7 +7,6 @@ import java.io.PrintStream;
 import java.lang.reflect.Modifier;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -59,7 +58,7 @@ class AppTest {
         var fields = Arrays.stream(component.getClass().getDeclaredFields())
                 .filter(f -> !Modifier.isStatic(f.getModifiers()))
                 .peek(f -> f.setAccessible(true))
-                .collect(Collectors.toList());
+                .toList();
 
         for (var field : fields) {
             var fieldValue = field.get(component);
