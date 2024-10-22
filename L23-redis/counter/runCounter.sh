@@ -1,6 +1,6 @@
 #!/bin/bash
 
-../../gradlew :L23-redis:counter:build
+../../gradlew :L23-redis:counter:jibBuildTar
 
 docker load --input build/jib-image.tar
 

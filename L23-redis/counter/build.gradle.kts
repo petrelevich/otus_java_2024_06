@@ -25,6 +25,5 @@ jib {
 tasks {
     build {
         dependsOn(spotlessApply)
-        dependsOn(jibBuildTar)
     }
 }
