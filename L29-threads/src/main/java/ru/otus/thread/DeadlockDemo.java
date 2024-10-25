@@ -56,22 +56,6 @@ public class DeadlockDemo {
         }
     }
 
-
-//    @SuppressWarnings("java:S125")
-//    private static void action(Resource has, Resource need) {
-//        logger.info("{} has: {}", Thread.currentThread().getName(), has);
-//        var first = has; // has.compareTo(need) > 0 ? has : need;
-//        var second = need; // has.compareTo(need) > 0 ? need : has;
-//        synchronized (first) {
-//            sleep();
-//            logger.info("{} taking: {}", Thread.currentThread().getName(), need);
-//            synchronized (second) {
-//                logger.info("taken by {}", Thread.currentThread().getName());
-//                operation(has, need);
-//            }
-//        }
-//    }
-
     private static void operation(Resource from, Resource to) {
         logger.info("transmition from {} to {}", from, to);
     }

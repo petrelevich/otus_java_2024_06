@@ -41,6 +41,8 @@ public class ThreadMethodDemo {
     private static boolean sleepAndStop() {
         try {
             Thread.sleep(TimeUnit.SECONDS.toMillis(1));
+            // Если поток получает interrupt() во время sleep(),
+            // то бросается InterruptedException
             return false;
         } catch (InterruptedException e) {
             // InterruptedException сдрасывает флаг isInterrupted()
