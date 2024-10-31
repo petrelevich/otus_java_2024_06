@@ -75,13 +75,15 @@ public class ActionDemo implements CommandLineRunner {
         log.info(">>> managerUpdated:{}", managerUpdated);
 
         /// создаем Client
-        var firstClient = dbServiceClient.saveClient(new Client(null,
+        var firstClient = dbServiceClient.saveClient(new Client(
+                null,
                 "dbServiceFirst" + System.currentTimeMillis(),
                 managerSecond.getId(),
                 1,
                 new ClientDetails(null, "init1")));
 
-        var clientSecond = dbServiceClient.saveClient(new Client(null,
+        var clientSecond = dbServiceClient.saveClient(new Client(
+                null,
                 "dbServiceSecond" + System.currentTimeMillis(),
                 managerSecond.getId(),
                 2,

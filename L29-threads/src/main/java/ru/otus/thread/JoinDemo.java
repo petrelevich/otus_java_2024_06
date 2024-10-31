@@ -9,7 +9,7 @@ public class JoinDemo {
 
     public static void main(String[] args) throws InterruptedException {
         freeRun();
-        //orderedRun();
+        orderedRun();
     }
 
     private static Thread createThread(String val) {

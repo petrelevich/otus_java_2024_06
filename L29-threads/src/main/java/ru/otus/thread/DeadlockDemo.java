@@ -43,7 +43,7 @@ public class DeadlockDemo {
         // Как решить проблему deadlock?
     }
 
-    @SuppressWarnings("java:S125")
+    @SuppressWarnings({"java:S125", "java:S2445"})
     private static void action(Resource has, Resource need) {
         logger.info("{} has: {}", Thread.currentThread().getName(), has);
         synchronized (has) {

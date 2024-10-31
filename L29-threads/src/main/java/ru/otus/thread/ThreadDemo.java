@@ -8,7 +8,7 @@ public class ThreadDemo {
 
     public static void main(String[] args) {
         case1();
-        // case2();
+        case2();
 
         // Когда какой способ использовать?
     }
@@ -20,8 +20,8 @@ public class ThreadDemo {
         // В логах видим имя потока
         logger.info("{}. Main program started (case1)", Thread.currentThread().getName());
 
-        var thread = new Thread(
-                () -> logger.info("from thread (case1): {}", Thread.currentThread().getName()));
+        var thread = new Thread(() ->
+                logger.info("from thread (case1): {}", Thread.currentThread().getName()));
         // Выполняется асинхронно
         thread.start(); // Просьба к JVM запустить поток
 

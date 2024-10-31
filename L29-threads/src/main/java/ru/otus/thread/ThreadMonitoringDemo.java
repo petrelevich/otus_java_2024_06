@@ -5,15 +5,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
-В VisualVM статусы потоков не соответствуют Thread.State
- @see Thread.State
-
-BLOCKED -> Monitor
-RUNNABLE -> Running
-WAITING/TIMED_WAITING -> Sleeping/Park/Wait
-TERMINATED/NEW -> Zombie
-
- https://stackoverflow.com/a/36449178
+ * В VisualVM статусы потоков не соответствуют Thread.State
+ * @see Thread.State
+ *
+ * BLOCKED -> Monitor
+ * RUNNABLE -> Running
+ * WAITING/TIMED_WAITING -> Sleeping/Park/Wait
+ * TERMINATED/NEW -> Zombie
+ *
+ * https://stackoverflow.com/a/36449178
  */
 public class ThreadMonitoringDemo {
     private static final Logger logger = LoggerFactory.getLogger(ThreadMonitoringDemo.class);
