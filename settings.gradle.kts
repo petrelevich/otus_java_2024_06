@@ -58,6 +58,8 @@ include ("L28-springDataJdbc")
 include ("L29-threads")
 include ("L30-JMM")
 include ("L31-executors")
+include ("L32-virtualThreads:base")
+include ("L32-virtualThreads:springBoot")
 
 pluginManagement {
     val jgitver: String by settings

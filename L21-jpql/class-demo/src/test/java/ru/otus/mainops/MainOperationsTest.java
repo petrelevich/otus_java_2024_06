@@ -55,8 +55,8 @@ class MainOperationsTest {
     void shouldThrowExceptionWhenPersistDetachedEntity() {
         var avatarNew = new Avatar(1L, "http://any-addr.ru/");
         assertThatThrownBy(() -> doInSessionWithTransaction(sf, session -> session.persist(avatarNew)))
-                //        .isInstanceOf(jakarta.persistence.EntityExistsException.class);
-                .isInstanceOf(org.hibernate.PersistentObjectException.class);
+                .isInstanceOf(jakarta.persistence.EntityExistsException.class);
+        // .isInstanceOf(org.hibernate.PersistentObjectException.class);
     }
 
     @DisplayName("persist выкидывает исключение если вставляемая сущность "
