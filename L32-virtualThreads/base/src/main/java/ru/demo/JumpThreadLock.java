@@ -1,17 +1,18 @@
 package ru.demo;
 
-import static java.time.temporal.ChronoUnit.MILLIS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.concurrent.locks.ReentrantLock;
 
-public class JumpThreadSynchronized {
-    private static final Logger log = LoggerFactory.getLogger(JumpThreadSynchronized.class);
+import static java.time.temporal.ChronoUnit.MILLIS;
 
-    @SuppressWarnings("java:S6906") // исключительно в демонстрационных учебных целях
+public class JumpThreadLock {
+    private static final Logger log = LoggerFactory.getLogger(JumpThreadLock.class);
+
     public static void main(String[] args) throws InterruptedException {
         Thread.ofVirtual().start(() -> {
             while (!Thread.currentThread().isInterrupted()) {
@@ -20,10 +21,14 @@ public class JumpThreadSynchronized {
         });
 
         var iterationCounter = new AtomicLong(0);
+        var lock = new ReentrantLock();
         var thread = Thread.ofVirtual().start(() -> {
             while (!Thread.currentThread().isInterrupted()) {
                 iterationCounter.incrementAndGet();
-                synchronized (JumpThreadSynchronized.class) {
+
+                try {
+                    lock.lock();
+
                     var firstThread = Thread.currentThread().toString();
                     sleep(10);
                     var secondThread = Thread.currentThread().toString();
@@ -37,6 +42,8 @@ public class JumpThreadSynchronized {
                             log.info("break loop");
                         }
                     }
+                } finally {
+                    lock.unlock();
                 }
             }
         });
