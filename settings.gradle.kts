@@ -61,6 +61,9 @@ include ("L31-executors")
 include ("L32-virtualThreads:base")
 include ("L32-virtualThreads:springBoot")
 
+include ("L33-concurrentCollections:ConcurrentCollections")
+include ("L33-concurrentCollections:QueueDemo")
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
