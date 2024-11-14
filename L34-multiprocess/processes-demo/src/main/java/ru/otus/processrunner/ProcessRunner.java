@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 public class ProcessRunner {
-    private static final String BASE_PATH = "./L33-multiprocess/processes-demo";
+    private static final String BASE_PATH = "./L34-multiprocess/processes-demo";
     private static final String FILES_PATH = BASE_PATH + "/files";
     private static final String SRC_PATH = BASE_PATH + "/src/main/java";
 
