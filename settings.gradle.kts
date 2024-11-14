@@ -64,6 +64,11 @@ include ("L32-virtualThreads:springBoot")
 include ("L33-concurrentCollections:ConcurrentCollections")
 include ("L33-concurrentCollections:QueueDemo")
 
+include ("L34-multiprocess:processes-demo")
+include ("L34-multiprocess:sockets-demo")
+include ("L34-multiprocess:rmi-demo")
+include ("L34-multiprocess:grpc-demo")
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
