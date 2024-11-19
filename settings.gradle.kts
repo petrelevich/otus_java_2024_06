@@ -69,6 +69,10 @@ include ("L34-multiprocess:sockets-demo")
 include ("L34-multiprocess:rmi-demo")
 include ("L34-multiprocess:grpc-demo")
 
+include ("L35-rabbitMQ:allServicesModels")
+include ("L35-rabbitMQ:approvalService")
+include ("L35-rabbitMQ:mainService")
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings
