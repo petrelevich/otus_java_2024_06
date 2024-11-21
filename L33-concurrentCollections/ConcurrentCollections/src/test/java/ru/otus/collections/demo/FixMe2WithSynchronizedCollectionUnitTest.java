@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 // - Разбираем результаты фикса.
 // - Какие проблемы остаются в коде?
 // - *Что особенного в методе join() в точки зрения видимости?
+@SuppressWarnings({"java:S1134", "java:S1135"})
 class FixMe2WithSynchronizedCollectionUnitTest {
     private static final Logger log = LoggerFactory.getLogger(FixMe2WithSynchronizedCollectionUnitTest.class);
     private static final int ITERATIONS_COUNT = 1000;

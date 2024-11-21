@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
@@ -134,7 +133,7 @@ class SensorDataProcessorBufferedTest {
         var latchReady = new CountDownLatch(2);
         var processFlag = new AtomicBoolean(true);
 
-        var writer = new SensorDataBufferedWriter() {
+        var sensorDataBufferedWriter = new SensorDataBufferedWriter() {
             private final List<SensorData> data = new ArrayList<>();
 
             @Override
@@ -147,20 +146,20 @@ class SensorDataProcessorBufferedTest {
             }
         };
 
-        var processor = new SensorDataProcessorBuffered(BUFFER_SIZE, writer);
+        var sensorDataProcessorBuffered = new SensorDataProcessorBuffered(BUFFER_SIZE, sensorDataBufferedWriter);
         var writerThread = new Thread(() -> {
             latchReady.countDown();
             awaitLatch(latchReady);
-            sensorDataList.forEach(processor::process);
+            sensorDataList.forEach(sensorDataProcessorBuffered::process);
             processFlag.set(false);
         });
         var flusherThread = new Thread(() -> {
             latchReady.countDown();
             awaitLatch(latchReady);
             do {
-                processor.flush();
+                sensorDataProcessorBuffered.flush();
             } while (processFlag.get());
-            processor.flush();
+            sensorDataProcessorBuffered.flush();
         });
 
         writerThread.start();
@@ -169,8 +168,8 @@ class SensorDataProcessorBufferedTest {
         writerThread.join(100);
         flusherThread.join(100);
 
-        assertThat(writer.getData()).hasSize(sensorDataList.size());
-        assertThat(writer.getData()).isEqualTo(sensorDataList);
+        assertThat(sensorDataBufferedWriter.getData()).hasSize(sensorDataList.size());
+        assertThat(sensorDataBufferedWriter.getData()).isEqualTo(sensorDataList);
     }
 
     private List<SensorData> getSensorDataForTest(int limit) {
@@ -179,7 +178,7 @@ class SensorDataProcessorBufferedTest {
                 .limit(limit)
                 .boxed()
                 .map(d -> new SensorData(startTime.plusSeconds(d.longValue()), ANY_ROOM, d))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     private void awaitLatch(CountDownLatch latch) {

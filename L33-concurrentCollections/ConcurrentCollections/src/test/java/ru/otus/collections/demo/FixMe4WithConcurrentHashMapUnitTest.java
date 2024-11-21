@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 // - Какую коллекцию будем менять и на какую?
 // - Фиксим тест сейчас!
 // - *Для какого сценария по нагрузке больше всего подходит ConcurrentHashMap?
+@SuppressWarnings({"java:S1134", "java:S1135"})
 class FixMe4WithConcurrentHashMapUnitTest {
     private static final Logger log = LoggerFactory.getLogger(FixMe4WithConcurrentHashMapUnitTest.class);
 

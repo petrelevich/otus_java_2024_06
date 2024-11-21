@@ -15,9 +15,11 @@ import ru.otus.services.RabbitMqService;
 
 @Slf4j
 @Component
+@SuppressWarnings({"java:S112", "java:S125"})
 public class RabbitMqListeners {
 
     private final RabbitMqService rabbitMqService;
+    private final Random random = new Random();
 
     public RabbitMqListeners(RabbitMqService rabbitMqService) {
         this.rabbitMqService = rabbitMqService;
@@ -46,7 +48,6 @@ public class RabbitMqListeners {
     }
 
     private VerificationStatus getRandomStatus() {
-        Random random = new Random();
         return random.nextBoolean() ? VerificationStatus.VERIFIED : VerificationStatus.REJECTED;
     }
 

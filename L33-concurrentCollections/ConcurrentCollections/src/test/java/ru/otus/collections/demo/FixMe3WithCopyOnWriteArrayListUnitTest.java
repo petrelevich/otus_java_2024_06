@@ -17,6 +17,7 @@ import org.slf4j.LoggerFactory;
 // - Какую коллекцию будем менять и на какую?
 // - Фиксим тест сейчас!
 // - *Для какого сценария по нагрузке больше всего подходит CopyOnWriteArrayList?
+@SuppressWarnings({"java:S1134", "java:S1135"})
 class FixMe3WithCopyOnWriteArrayListUnitTest {
     private static final Logger log = LoggerFactory.getLogger(FixMe3WithCopyOnWriteArrayListUnitTest.class);
 

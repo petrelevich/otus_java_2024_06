@@ -1,14 +1,13 @@
 package ru.demo;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import static java.time.temporal.ChronoUnit.MILLIS;
 
 import java.time.Duration;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.concurrent.locks.ReentrantLock;
-
-import static java.time.temporal.ChronoUnit.MILLIS;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class JumpThreadLock {
     private static final Logger log = LoggerFactory.getLogger(JumpThreadLock.class);

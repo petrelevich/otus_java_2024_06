@@ -26,6 +26,7 @@ import org.slf4j.LoggerFactory;
 // - Какие проблемы остаются в коде?
 // - *Для чего тут нужен CountDownLatch?
 // - *Зачем вызывать join() на потоках?
+@SuppressWarnings({"java:S1134", "java:S1135"})
 class FixMe1WithMonitorUnitTest {
     private static final Logger log = LoggerFactory.getLogger(FixMe1WithMonitorUnitTest.class);
     private static final int ITERATIONS_COUNT = 1000;

@@ -73,6 +73,8 @@ include ("L35-rabbitMQ:allServicesModels")
 include ("L35-rabbitMQ:approvalService")
 include ("L35-rabbitMQ:mainService")
 
+include ("L36-NIO")
+
 pluginManagement {
     val jgitver: String by settings
     val dependencyManagement: String by settings

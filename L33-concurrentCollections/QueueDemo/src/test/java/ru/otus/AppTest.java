@@ -15,7 +15,6 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.random.RandomGenerator;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.RepeatedTest;
 import org.mockito.ArgumentCaptor;
@@ -93,7 +92,7 @@ class AppTest {
 
         var allData = allDataByRooms.entrySet().stream()
                 .flatMap(e -> e.getValue().stream())
-                .collect(Collectors.toList());
+                .toList();
         var allDataByBindedRoom = allDataByRooms.getOrDefault(ROOM_NAME_BINDING, new ArrayList<>());
 
         assertThat(allData).isNotEmpty();
