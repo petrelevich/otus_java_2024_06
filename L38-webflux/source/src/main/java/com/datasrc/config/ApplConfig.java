@@ -1,7 +1,7 @@
 package com.datasrc.config;
 
 import io.netty.channel.nio.NioEventLoopGroup;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicLong;
@@ -39,8 +39,8 @@ public class ApplConfig {
         return factory;
     }
 
-    @Bean(name = "blockingExecutor", destroyMethod = "close")
-    public Executor blockingExecutor() {
+    @Bean(name = "blockingExecutor", destroyMethod = "shutdown")
+    public ExecutorService blockingExecutor() {
         var id = new AtomicLong(0);
         return Executors.newFixedThreadPool(
                 BLOCKING_THREAD_POOL_SIZE,
