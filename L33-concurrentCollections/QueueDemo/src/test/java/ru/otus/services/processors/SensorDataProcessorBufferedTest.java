@@ -64,7 +64,7 @@ class SensorDataProcessorBufferedTest {
     @Test
     @Disabled("Удалить до начала тестирования")
     void shouldFlushBufferDataSortedByTime() {
-        List<SensorData> sensorDataList = getSensorDataForTest(BUFFER_SIZE - 1);
+        var sensorDataList = new ArrayList<>(getSensorDataForTest(BUFFER_SIZE - 1));
         var originalSensorDataList = List.copyOf(sensorDataList);
         Collections.shuffle(sensorDataList);
 
@@ -196,6 +196,7 @@ class SensorDataProcessorBufferedTest {
         try {
             thread.join(10);
         } catch (InterruptedException ignored) {
+            Thread.currentThread().interrupt();
         }
     }
 }
