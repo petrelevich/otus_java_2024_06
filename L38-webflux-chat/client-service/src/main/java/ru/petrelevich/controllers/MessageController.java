@@ -48,7 +48,7 @@ public class MessageController {
             logger.error("Can not get simpDestination header, headers:{}", genericMessage.getHeaders());
             throw new ChatException("Can not get simpDestination header");
         }
-        if (!simpDestination.startsWith(template.getUserDestinationPrefix())) {
+        if (!simpDestination.startsWith(TOPIC_TEMPLATE)) {
             return;
         }
         var roomId = parseRoomId(simpDestination);
